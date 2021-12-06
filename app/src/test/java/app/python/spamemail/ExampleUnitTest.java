@@ -1,4 +1,4 @@
-package com.example.apppython;
+package app.python.spamemail;
 
 import org.junit.Test;
 

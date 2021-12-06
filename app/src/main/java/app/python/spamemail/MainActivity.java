@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     EditText NMessage;
     Button Run;
     TextView output;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Passw = (EditText)findViewById(R.id.passw);
         To = (EditText)findViewById(R.id.to);
         Subject = (EditText)findViewById(R.id.subject);
+        Message = (EditText)findViewById(R.id.message);
         NMessage = (EditText)findViewById(R.id.nMessage);
         Run = (Button)findViewById(R.id.run);
         output = (TextView)findViewById(R.id.output);
@@ -51,19 +53,22 @@ public class MainActivity extends AppCompatActivity {
                 //here we call our script with the name "myscirpt
                 PyObject pyobj = py.getModule("spam_email");  //give python script name
 
-                String email = "antix568@gmail.com";
-                String passw = "passwantix568";
-                String email2 = "antix568@gmail.com";
-                String oggetto = "Test";
-                String contenuto = "Test";
-                Integer NUMBER_OF_EMAILS = 2;
+
+
+
+
+                String email = From.getText().toString();
+                String passw = Passw.getText().toString();
+                String email2 = To.getText().toString();
+                String oggetto = Subject.getText().toString();
+                String contenuto = Message.getText().toString();
+                Integer NUMBER_OF_EMAILS = Integer.parseInt(NMessage.getText().toString());
 
 
 
                 //and call main method inside script...//pass data here
                 PyObject obj = pyobj.callAttr("main",
-                        From.getText().toString(),Passw.getText().toString(),To.getText().toString(),
-                        Subject.getText().toString(),Message.getText().toString(),Integer.parseInt(NMessage.getText().toString()));
+                        email,passw,email2,oggetto,contenuto,NUMBER_OF_EMAILS);
 
                 //here we will set returned value of our python script to our output textview
                 output.setText(obj.toString());

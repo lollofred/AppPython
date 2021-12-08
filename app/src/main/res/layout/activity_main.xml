@@ -24,15 +24,34 @@
         android:layout_height="50dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:textColor="@color/black"
         android:hint="From"/>
 
-    <EditText
-        android:id="@+id/passw"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Password"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/passw"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:hint="Password" />
+
+        <ImageView
+            android:id="@+id/show_pass_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:alpha=".5"
+            android:onClick="ShowHidePass"
+            android:padding="5dp"
+            android:src="@drawable/show_password" />
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/to"
@@ -40,7 +59,8 @@
         android:layout_height="50dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="To"/>
+        android:textColor="@color/black"
+        android:hint="To (Can enter move split by ,)"/>
 
     <EditText
         android:id="@+id/nMessage"
@@ -48,6 +68,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:textColor="@color/black"
         android:hint="N. message"/>
 
 
@@ -57,6 +78,7 @@
         android:layout_height="50dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="@color/black"
         android:hint="Object" />
 
 
@@ -70,6 +92,7 @@
         android:lines="8"
         android:padding="20dp"
         android:scrollbars="vertical"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
 
@@ -81,10 +104,21 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:background="@color/teal_200"
+        android:theme="@style/Theme.SpamEmail"
         android:padding="20dp"
         android:text="Spam"
         android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="364dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:linksClickable="true"
+        android:padding="20dp"
+        android:text="@string/link"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"

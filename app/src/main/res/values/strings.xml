@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpamEmail</string>
+    <string name="link"><a href="https://myaccount.google.com/u/3/lesssecureapps?pageId=none">Click here to give access to the app</a></string>
 </resources>

